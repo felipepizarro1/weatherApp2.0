@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import Headerunit from './components/Headerunit';
+import Mainday from './components/Mainday';
+import Infodetail from './components/Infodetail';
+import Searchbar from './components/Searchbar';
+import Citiesandmore from './components/Citiesandmore';
+import React, { useState, useEffect } from 'react';
+
+
+
 
 function App() {
+
+  // const fetchWeather = async () => {
+  //   const data = await getFormattedWeatherData({ q: "tokyo"});
+  //   return data;
+  // };
+
+  // fetchWeather();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+              <div class="container-fluid px-1 px-sm-3 py-5 mx-auto">
+                <div class="row d-flex justify-content-center">
+                    <div class="row card0">
+                        <div class="card1 col-lg-8 col-md-7">
+                          <Headerunit/>
+                          <Mainday cityName="London" />
+                          <Infodetail/>
+                        </div>
+                        <div class="card2 col-lg-4 col-md-5">
+                          <Searchbar/>
+                          <Citiesandmore name="Weather Details" sunny="poto" other="rrr"/>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+    
   );
 }
 
