@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function Citiesandmore({name, sunny, other}) {
+export default function Citiesandmore({name, sunny, other, citycall}) {
     const cities = [
         {
             id:1,
-            name: "Roma",
+            name: "Rome",
         },
         {
             id:2,
-            name: "Paris",
+            name: "Santiago",
         },
         {
             id:3,
@@ -16,13 +16,13 @@ export default function Citiesandmore({name, sunny, other}) {
         },
         {
             id:4,
-            name: "Madrid",
+            name: "Los Angeles",
         },
     ]
   return (
     <div class="mr-5">
         {cities.map((city)=>(
-            <p key={city.id} class="light-text suggestion">{city.name}</p>
+            <p onClick={citycall} key={city.id} class="light-text suggestion">{city.name}</p>
         ))}
         
         <div class="line my-5"></div>
