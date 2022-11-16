@@ -52,12 +52,12 @@ function App() {
                     <div class="row card0">
                         <div class="card1 col-lg-8 col-md-7">
                           <Headerunit temp={farenheit}/>
-                          <Mainday cityName={update} temperature={content.temp}/>
+                          <Mainday cityName={update} temperature={Math.round(content.temp)}/>
                           <Infodetail/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                           <Searchbar/>
-                          <Citiesandmore name="Weather Details" sunny="poto" other="rrr" citycall={santiago}/>
+                          <Citiesandmore name="Weather Details" sunny="poto" other="rrr" citycall={santiago} humidity={content.humidity}/>
                         </div>
                     </div>
                 </div>
