@@ -53,7 +53,7 @@ function App() {
                         <div class="card1 col-lg-8 col-md-7">
                           <Headerunit temp={farenheit}/>
                           <Mainday cityName={update} temperature={Math.round(content.temp)}/>
-                          <Infodetail/>
+                          <Infodetail min={content.temp_min} max={content.temp_max}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                           <Searchbar/>

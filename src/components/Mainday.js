@@ -13,6 +13,7 @@ export default function Mainday({cityName, temperature}) {
             <h3 class="fa fa-sun-o mt-4"></h3>
             <small>Sunny</small>
         </div>
+        
     </div>
   )
 }
