@@ -13,9 +13,9 @@ function App() {
 
     const API_KEY = "84ea03d648cf9492e6c4d8b23085e149"
 
-    const [tempmesure, setTempmesure] = useState("&units=metric");
-    const [update, setUpdate] = useState("New York");
-    const [content, setContent] = useState([]);
+    const [tempmesure, setTempmesure] = useState("&units=metric")
+    const [update, setUpdate] = useState("Milano")
+    const [content, setContent] = useState([])
 
     useEffect(()=>{
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
@@ -51,15 +51,13 @@ function App() {
                 <div class="row d-flex justify-content-center">
                     <div class="row card0">
                         <div class="card1 col-lg-8 col-md-7">
-                        
                           <Headerunit temp={farenheit}/>
-                          <Mainday cityName="New York" temperature={Math.round(content.temp)}/>
+                          <Mainday cityName={update} temperature={Math.round(content.temp)}/>
                           <Infodetail min={content.temp_min} max={content.temp_max}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                           <Searchbar/>
-                          <Citiesandmore name="Weather Details" sunny="poto" other="rrr" citycall={santiago} humidity={content.humidity}/>
-                          {console.log(content)}
+                          <Citiesandmore name="Weather Details"  citycall={santiago} humidity={content.humidity}/>
                         </div>
                     </div>
                 </div>

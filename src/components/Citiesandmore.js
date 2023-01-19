@@ -28,7 +28,7 @@ export default function Citiesandmore({name, sunny, other, citycall, humidity}) 
         <div class="line my-5"></div>
         <p>{name}</p>
         <div class="row px-3">
-            <p class="light-text">Cloudy, {sunny}, {other}</p>
+            <p class="light-text">Cloudy</p>
             <p class="ml-auto">12%</p>
         </div>
         <div class="row px-3">
