@@ -11,6 +11,10 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
+    const handleOnSearchChange = (searchData) =>{
+      console.log(searchData);
+    }
+
     const API_KEY = "84ea03d648cf9492e6c4d8b23085e149"
 
     const [tempmesure, setTempmesure] = useState("&units=metric")
@@ -56,7 +60,7 @@ function App() {
                           <Infodetail min={content.temp_min} max={content.temp_max}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
-                          <Searchbar/>
+                          <Searchbar onSearchChange={handleOnSearchChange}/>
                           <Citiesandmore name="Weather Details"  citycall={santiago} humidity={content.humidity}/>
                         </div>
                     </div>

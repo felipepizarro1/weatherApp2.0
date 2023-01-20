@@ -5,6 +5,10 @@ import { AsyncPaginate } from 'react-select-async-paginate'
 export default function Searchbar({onSearchChange}) {
 
   const [search, setSearch] = useState(null);
+
+  const loadOptions = (inputValue) => {
+     return
+  }
   const handleOnChange = (searchData) => {
     setSearch(searchData);
     onSearchChange(searchData);
@@ -19,7 +23,9 @@ export default function Searchbar({onSearchChange}) {
     placeholder="Search for city"
     debounceTimeout={600}
     value={search}
-    onChange={handleOnChange}/>                       
+    onChange={handleOnChange}
+    loadOptions={loadOptions}
+    />                       
         <input type="text" name="location" placeholder="Another locations" class="mb-5 text-capitalize"></input>
         <div class="fa fa-search mb-5 mr-0 text-center"></div> 
     </div>
