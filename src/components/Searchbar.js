@@ -7,7 +7,9 @@ export default function Searchbar({onSearchChange}) {
   const [search, setSearch] = useState(null);
 
   const loadOptions = (inputValue) => {
-     return
+     return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
+     .then(response => response.json())
+     .then(json => setContent(json.main))
   }
   const handleOnChange = (searchData) => {
     setSearch(searchData);
