@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Citiesandmore({name, sunny, other, citycall, humidity}) {
+export default function Citiesandmore({name, sunny, other, citycall, humidity, cloudiness}) {
     const cities = [
         {
             id:1,
@@ -28,8 +28,8 @@ export default function Citiesandmore({name, sunny, other, citycall, humidity}) 
         <div class="line my-5"></div>
         <p>{name}</p>
         <div class="row px-3">
-            <p class="light-text">Cloudy</p>
-            <p class="ml-auto">12%</p>
+            <p class="light-text">Cloudiness</p>
+            <p class="ml-auto">{cloudiness}%</p>
         </div>
         <div class="row px-3">
             <p class="light-text">Humidity</p>

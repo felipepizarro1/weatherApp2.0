@@ -25,7 +25,7 @@ function App() {
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
       .then(response => response.json())
       .then(json => setContent(json.main))
-    }, [update,tempmesure])
+    }, [update])
 
     
 
@@ -56,12 +56,12 @@ function App() {
                     <div class="row card0">
                         <div class="card1 col-lg-8 col-md-7">
                           <Headerunit temp={farenheit}/>
-                          <Mainday cityName={update} temperature={Math.round(content.temp)}/>
+                          <Mainday cityName={update} temperature={Math.round(content.temp)} feels={content.feels_like}/>
                           <Infodetail min={content.temp_min} max={content.temp_max}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                           <Searchbar onSearchChange={handleOnSearchChange}/>
-                          <Citiesandmore name="Weather Details"  citycall={santiago} humidity={content.humidity}/>
+                          <Citiesandmore name="Weather Details"  citycall={santiago} humidity={content.humidity} cloudiness={content.clouds}/>
                         </div>
                     </div>
                 </div>

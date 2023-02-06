@@ -4,10 +4,16 @@ import { AsyncPaginate } from 'react-select-async-paginate'
 
 export default function Searchbar({onSearchChange}) {
 
+  const API_KEY = "84ea03d648cf9492e6c4d8b23085e149";
+
   const [search, setSearch] = useState(null);
+  const [update, setUpdate] = useState("Milano")
+  const [tempmesure, setTempmesure] = useState("&units=metric")
+  const [content, setContent] = useState([])
 
   const loadOptions = (inputValue) => {
-     return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
+    /*la query (q=) tiene que llevar el resultado del inputValue */
+     return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${API_KEY}${tempmesure}`)
      .then(response => response.json())
      .then(json => setContent(json.main))
   }
@@ -33,4 +39,6 @@ export default function Searchbar({onSearchChange}) {
     </div>
     </>
   )
+
+  /*Tendría que meter en una variable el nombre de la query insertada por el usuario, y luego esta variable importarla en app y pasarla en query a la fetch que está entregando los datos a los demás componentes */
 }
