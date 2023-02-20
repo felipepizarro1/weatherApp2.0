@@ -47,23 +47,18 @@ function App() {
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                         <div class="row px-3"> 
-                        <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={(input) => {setUpdate(input.target.value)}}/>
-                        {content.filter((val)=> {
+                        <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={(event) => {setUpdate(event.target.value)}}/>
+                        {console.log(content)}
+                        {content.isArray ? content.filter((val)=> {
                           if(update == ""){
                             return
-                          } else if(val.toLowerCase().includes(update.toLowerCase())){
+                          } else if(val.name.toLowerCase().includes(update.toLowerCase())){
                             return val
 
                           }
-                        }).map((v,key)=> {
-                          return (
-                            <div className="user" key={key}>
-                              <p>{v.name}</p>
-                              </div>
-                          )
                         })
                         
-                        }
+                        : null}
                         <div class="fa fa-search mb-5 mr-0 text-center"></div>
                         </div> 
                           <Citiesandmore name="Weather Details"  citycall humidity={content.humidity} cloudiness={content.clouds}/>
