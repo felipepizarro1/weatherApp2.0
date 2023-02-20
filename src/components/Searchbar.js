@@ -34,7 +34,7 @@ export default function Searchbar({onSearchChange}) {
     onChange={handleOnChange}
     loadOptions={loadOptions}
     />                       
-        <input type="text" name="location" placeholder="Another locations" class="mb-5 text-capitalize"></input>
+        <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={(input) => setUpdate(input.target.value)}/>
         <div class="fa fa-search mb-5 mr-0 text-center"></div> 
     </div>
     </>

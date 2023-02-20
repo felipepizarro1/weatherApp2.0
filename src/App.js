@@ -11,9 +11,7 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
 
-    const handleOnSearchChange = (searchData) =>{
-      console.log(searchData);
-    }
+    
 
     const API_KEY = "84ea03d648cf9492e6c4d8b23085e149"
 
@@ -29,19 +27,6 @@ function App() {
 
     
 
-    function rome(){
-        setUpdate((pupdate) => pupdate = "Rome")
-    }
-    function santiago(){
-        setUpdate((pupdate) => pupdate = "Santiago")
-    }
-    function losangeles(){
-        setUpdate((pupdate) => pupdate = "Los Angeles")
-    }
-
-    function farenheit (){
-      setTempmesure((pupdate) => pupdate = "")
-    }
 
   // const fetchWeather = async () => {
   //   const data = await getFormattedWeatherData({ q: "tokyo"});
@@ -53,15 +38,35 @@ function App() {
   return (
               <div class="container-fluid px-1 px-sm-3 py-5 mx-auto">
                 <div class="row d-flex justify-content-center">
+                  
                     <div class="row card0">
                         <div class="card1 col-lg-8 col-md-7">
-                          <Headerunit temp={farenheit}/>
+                          <Headerunit temp/>
                           <Mainday cityName={update} temperature={Math.round(content.temp)} feels={content.feels_like}/>
                           <Infodetail min={content.temp_min} max={content.temp_max}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
-                          <Searchbar onSearchChange={handleOnSearchChange}/>
-                          <Citiesandmore name="Weather Details"  citycall={santiago} humidity={content.humidity} cloudiness={content.clouds}/>
+                        <div class="row px-3"> 
+                        <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={(input) => {setUpdate(input.target.value)}}/>
+                        {content.filter((val)=> {
+                          if(update == ""){
+                            return
+                          } else if(val.toLowerCase().includes(update.toLowerCase())){
+                            return val
+
+                          }
+                        }).map((v,key)=> {
+                          return (
+                            <div className="user" key={key}>
+                              <p>{v.name}</p>
+                              </div>
+                          )
+                        })
+                        
+                        }
+                        <div class="fa fa-search mb-5 mr-0 text-center"></div>
+                        </div> 
+                          <Citiesandmore name="Weather Details"  citycall humidity={content.humidity} cloudiness={content.clouds}/>
                         </div>
                     </div>
                 </div>

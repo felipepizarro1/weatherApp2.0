@@ -21,10 +21,11 @@ export default function Citiesandmore({name, sunny, other, citycall, humidity, c
     ]
   return (
     <div class="mr-5">
-        {cities.map((city)=>(
-            <p onClick={citycall} key={city.id} class="light-text suggestion">{city.name}</p>
-        ))}
         
+        <p  class="light-text suggestion">Rome</p>
+        <p   class="light-text suggestion">London</p>
+        <p  class="light-text suggestion">Santiago</p>
+        <p   class="light-text suggestion">Tokyo</p>
         <div class="line my-5"></div>
         <p>{name}</p>
         <div class="row px-3">
