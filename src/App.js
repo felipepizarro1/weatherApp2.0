@@ -43,7 +43,7 @@ function App() {
                         <div class="card1 col-lg-8 col-md-7">
                           <Headerunit temp/>
                           <Mainday cityName={update} temperature={Math.round(content.temp)} feels={content.feels_like}/>
-                          <Infodetail min={content.temp_min} max={content.temp_max}/>
+                          <Infodetail min={Math.round(content.temp_min)} max={Math.round(content.temp_max)}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                         <div class="row px-3"> 
