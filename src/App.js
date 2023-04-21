@@ -16,25 +16,34 @@ function App() {
     const API_KEY = "84ea03d648cf9492e6c4d8b23085e149"
 
     const [tempmesure, setTempmesure] = useState("&units=metric")
-    const [update, setUpdate] = useState("Milano")
+
+    const [words, setWords] = useState("Milano")
+    const [update, setUpdate] = useState(words)
     const [content, setContent] = useState([])
+
+
+    const handleChange = (event) => {
+      {setWords(event.target.value)}
+
+    }
+
+    const handleClick = () => {
+      setUpdate(words)
+    }
+
+    
 
     useEffect(()=>{
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
       .then(response => response.json())
-      .then(json => {
-        const time =
-        setInterval(() => {
+      .then(json => 
+        
         setContent(json.main)
-    },2000)
-        return () =>{
-          clearInterval(time);
-        }})
+    
+        )
     }, [update])
 
     
-
-
   // const fetchWeather = async () => {
   //   const data = await getFormattedWeatherData({ q: "tokyo"});
   //   return data;
@@ -54,7 +63,8 @@ function App() {
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                         <div class="row px-3"> 
-                        <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={(event) => {setUpdate(event.target.value)}}/>
+                        <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={handleChange}  />
+                        <button className= "fa fa-search mb-5 mr-0 text-center" onClick={handleClick} />
                         {console.log(content)}
                         {content.isArray ? content.filter((val)=> {
                           if(update == ""){
@@ -63,10 +73,11 @@ function App() {
                             return val
 
                           }
+                          
                         })
                         
                         : null}
-                        <div class="fa fa-search mb-5 mr-0 text-center"></div>
+                      
                         </div> 
                           <Citiesandmore name="Weather Details"  citycall humidity={content.humidity} cloudiness={content.clouds}/>
                         </div>
