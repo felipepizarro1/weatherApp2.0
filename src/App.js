@@ -22,6 +22,16 @@ function App() {
     const [content, setContent] = useState([])
 
 
+    const handleTemp = () => {
+      if(tempmesure = "&units=metric"){
+       return setTempmesure("&units=imperial")
+      }
+      else if(tempmesure = "&units=imperial"){
+        return setTempmesure("&units=metric")
+      }
+
+    }
+
     const handleChange = (event) => {
       {setWords(event.target.value)}
 
@@ -41,7 +51,7 @@ function App() {
         setContent(json.main)
     
         )
-    }, [update])
+    }, [update,tempmesure])
 
     
   // const fetchWeather = async () => {
@@ -57,15 +67,15 @@ function App() {
                   
                     <div class="row card0">
                         <div class="card1 col-lg-8 col-md-7">
-                          <Headerunit temp/>
+                          <Headerunit action={handleTemp}/>
                           <Mainday cityName={update} temperature={Math.round(content.temp)} feels={content.feels_like}/>
                           <Infodetail min={Math.round(content.temp_min)} max={Math.round(content.temp_max)}/>
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                         <div class="row px-3"> 
                         <input type="text" name="location" placeholder="Search" class="mb-5 text-capitalize" onChange={handleChange}  />
-                        <button className= "fa fa-search mb-5 mr-0 text-center" onClick={handleClick} />
-                        {console.log(content)}
+                        <button className= "fa fa-search mb-5 mr-0 text-center border-0" onClick={handleClick} />
+                        
                         {content.isArray ? content.filter((val)=> {
                           if(update == ""){
                             return
