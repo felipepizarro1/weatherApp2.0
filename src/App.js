@@ -22,7 +22,14 @@ function App() {
     useEffect(()=>{
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
       .then(response => response.json())
-      .then(json => setContent(json.main))
+      .then(json => {
+        const time =
+        setInterval(() => {
+        setContent(json.main)
+    },2000)
+        return () =>{
+          clearInterval(time);
+        }})
     }, [update])
 
     
