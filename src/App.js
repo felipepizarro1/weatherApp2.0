@@ -15,22 +15,22 @@ function App() {
 
     const API_KEY = "84ea03d648cf9492e6c4d8b23085e149"
 
-    const [tempmesure, setTempmesure] = useState("&units=metric")
+    // const [tempmesure, setTempmesure] = useState("&units=metric")
 
     const [words, setWords] = useState("Milano")
     const [update, setUpdate] = useState(words)
     const [content, setContent] = useState([])
 
 
-    const handleTemp = () => {
-      if(tempmesure = "&units=metric"){
-       return setTempmesure("&units=imperial")
-      }
-      else if(tempmesure = "&units=imperial"){
-        return setTempmesure("&units=metric")
-      }
+    //const handleTemp = () => {
+    //  if(tempmesure = "&units=metric"){
+    //   return setTempmesure("&units=imperial")
+    //  }
+    //  else if(tempmesure = "&units=imperial"){
+    //    return setTempmesure("&units=metric")
+    //  }
 
-    }
+    //}
 
     const handleChange = (event) => {
       {setWords(event.target.value)}
@@ -44,22 +44,14 @@ function App() {
     
 
     useEffect(()=>{
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}${tempmesure}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${update}&appid=${API_KEY}&units=metric`)
       .then(response => response.json())
-      .then(json => 
-        
-        setContent(json.main)
-    
-        )
-    }, [update,tempmesure])
+      .then(json =>setContent(json.main))
+    }, [update])
 
     
-  // const fetchWeather = async () => {
-  //   const data = await getFormattedWeatherData({ q: "tokyo"});
-  //   return data;
-  // };
-
-  // fetchWeather();
+  
+  
   
   return (
               <div class="container-fluid px-1 px-sm-3 py-5 mx-auto">
@@ -67,9 +59,11 @@ function App() {
                   
                     <div class="row card0">
                         <div class="card1 col-lg-8 col-md-7">
-                          <Headerunit action={handleTemp}/>
+                          <Headerunit /> 
+                          
                           <Mainday cityName={update} temperature={Math.round(content.temp)} feels={content.feels_like}/>
                           <Infodetail min={Math.round(content.temp_min)} max={Math.round(content.temp_max)}/>
+                          
                         </div>
                         <div class="card2 col-lg-4 col-md-5">
                         <div class="row px-3"> 
@@ -89,7 +83,14 @@ function App() {
                         : null}
                       
                         </div> 
-                          <Citiesandmore name="Weather Details"  citycall humidity={content.humidity} cloudiness={content.clouds}/>
+                        <div class="mr-5">
+                          <p  class="light-text suggestion" onClick={()=>setUpdate("Athens")}>Athens</p>
+                          <p  class="light-text suggestion" onClick={()=>setUpdate("London")}>London</p>
+                          <p  class="light-text suggestion" onClick={()=>setUpdate("Santiago")}>Santiago</p>
+                          <p  class="light-text suggestion" onClick={()=>setUpdate("Lisbon")}>Lisbon</p>
+                          
+                          <Citiesandmore name="Weather Details"  citycall humidity={content.humidity} pressure={content.pressure} />
+                          </div>
                         </div>
                     </div>
                 </div>

@@ -1,50 +1,26 @@
 import React from 'react'
 
-export default function Citiesandmore({name, sunny, other, citycall, humidity, cloudiness}) {
-    const cities = [
-        {
-            id:1,
-            name: "Rome",
-        },
-        {
-            id:2,
-            name: "Santiago",
-        },
-        {
-            id:3,
-            name: "Milano",
-        },
-        {
-            id:4,
-            name: "Los Angeles",
-        },
-    ]
+export default function Citiesandmore({name, sunny, other, citycall, humidity, pressure}) {
+    
   return (
-    <div class="mr-5">
-        
-        <p  class="light-text suggestion">Rome</p>
-        <p   class="light-text suggestion">London</p>
-        <p  class="light-text suggestion">Santiago</p>
-        <p   class="light-text suggestion">Tokyo</p>
+    <>
         <div class="line my-5"></div>
         <p>{name}</p>
-        <div class="row px-3">
-            <p class="light-text">Cloudiness</p>
-            <p class="ml-auto">{cloudiness}%</p>
-        </div>
+
         <div class="row px-3">
             <p class="light-text">Humidity</p>
             <p class="ml-auto">{humidity}%</p>
         </div>
         <div class="row px-3">
-            <p class="light-text">Wind</p>
-            <p class="ml-auto">1km/h</p>
+            <p class="light-text">Air Pressure</p>
+            <p class="ml-auto">{pressure + " hPa"}</p>
         </div>
+
+        <div class="line mt-5"></div>
         <div class="row px-3">
-            <p class="light-text">Rain</p>
-            <p class="ml-auto">0mm</p>
+        <small class="light-text mt-2">Created with Weather API by <a className='text-info' href="https://github.com/felipepizarro1">Felipe Pizarro</a></small>
         </div>
-        <div class="line mt-3"></div>
-    </div>
+    </>
+    
   )
 }

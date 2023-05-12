@@ -16,10 +16,12 @@ export default function Headerunit({action}) {
             pisHovering = false
         )
     }
+
+    //<button onMouseOver={hover} onMouseLeave={notHover} onClick={()=>action} class="fa fa-thermometer-full btn btn-outline-light  mb-1 mr-0 text-center "></button>
+    //{isHovering ? <span> Celsius or Fahrenheit</span> : null}
   return (
     <>
-        <button onMouseOver={hover} onMouseLeave={notHover} onClick={()=>action} class="fa fa-thermometer-full btn btn-outline-light  mb-1 mr-0 text-center "></button>
-        {isHovering ? <span> Celsius or Fahrenheit</span> : null}
+        
         <div class="text-center">
             <img class="image mt-5" src="https://i.imgur.com/M8VyA2h.png"></img>
         </div>
